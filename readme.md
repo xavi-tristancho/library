@@ -16,5 +16,5 @@ $ composer install
 
 public folder
 ```
-$ bower instal 
+$ bower install
 ```
