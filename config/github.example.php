@@ -38,7 +38,7 @@ return [
     'connections' => [
 
         'main' => [
-            'token'   => '749ca4361a54c84749c4684c4b989143b36ffecf',
+            'token'   => 'your-token',
         ],
 
         'alternative' => [
