@@ -1,0 +1,24 @@
+.navbar {
+    border-radius: 0;
+}
+
+.projects, .repositories {
+    margin-top: 10px;
+}
+
+.repositories a{
+	color: black;
+}
+
+.repositories label{
+	cursor: pointer;
+}
+
+.repositories a > i.fa-trash {
+	color : #DA4453;
+	cursor: pointer;
+}
+
+.repositories .icons{
+	text-align: right;
+}
