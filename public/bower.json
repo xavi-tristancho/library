@@ -1,0 +1,22 @@
+{
+  "name": "library",
+  "version": "0.0.1",
+  "authors": [
+    "Xavier Tristancho <xavi@letitguide.com>"
+  ],
+  "description": "Project Dependency Management",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Bootflat": "~2.0.4",    
+    "bootstrap": "~3.3.4",
+    "fontawesome": "~4.3.0",
+    "sweetalert": ">=0.3.0"
+  }
+}
