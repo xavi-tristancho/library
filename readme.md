@@ -19,6 +19,8 @@ public folder
 $ bower install
 ```
 
+Finally you will need to copy the .env.example file and create a .env file with your database connection configuration
+
 ### Github Configuration
 
 In order to be able to read the github api you wil need to rename the file config/github.example.php to config.github.php and place the token.
