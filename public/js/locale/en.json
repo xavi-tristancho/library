@@ -1,0 +1,21 @@
+{
+	"resources" : {
+		"projects" : {
+			"name" : "project",
+			"delete" : "project and all it's repositories"
+		},
+		"repositories" : {
+			"name" : "repository",
+			"delete" : "repository"
+		}
+	},
+	"alerts" : {
+		"delete" : "The {{ message }} will be deleted!"
+	},
+	"notifications" : {
+		"done" : "Done!"
+	},
+	"actions" : {
+		"add" : "Add"
+	}
+}
