@@ -40,9 +40,9 @@ class RepositoriesController extends ApiController {
      *
      * @return Response
      */
-    public function index($project)
+    public function index($projectId)
     {
-        $repositories = Project::find($project)->repositories;
+        $repositories = Project::find($projectId)->repositories;
         $githubRepositories = $this->getRepositories($repositories);
 
         return $this->fractal->collection($githubRepositories, new RepositoryTransformer());
@@ -51,7 +51,6 @@ class RepositoriesController extends ApiController {
     /**
      * Store a newly created resource in storage.
      *
-     * @param CreateRepositoryRequest $request
      * @param $projectId
      * @return Response
      */
@@ -195,6 +194,7 @@ class RepositoriesController extends ApiController {
             $githubRepository['id'] = $repository->id;
             array_push($githubRepositories, $githubRepository);            
         }
+
         return $githubRepositories;
     }
 }
