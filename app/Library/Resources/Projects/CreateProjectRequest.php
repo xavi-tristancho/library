@@ -4,6 +4,8 @@ use Library\Http\Requests\Request;
 
 class CreateProjectRequest extends Request {
 
+	use \Library\Http\Responses\ApiResponses;
+
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -24,6 +26,11 @@ class CreateProjectRequest extends Request {
 		return [
 			'name' => 'required|unique:projects'
 		];
+	}
+
+	public function response(array $errors)
+	{
+		return $this->setStatusCode(422)->respondWithError('The project name is already in use');
 	}
 
 }
