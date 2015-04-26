@@ -14,9 +14,10 @@
     "tests"
   ],
   "dependencies": {
-    "Bootflat": "~2.0.4",    
+    "Bootflat": "~2.0.4",
     "bootstrap": "~3.3.4",
     "fontawesome": "~4.3.0",
-    "sweetalert": ">=0.3.0"
+    "sweetalert": ">=0.3.0",
+    "angularjs-toaster": "~0.4.12"
   }
 }
