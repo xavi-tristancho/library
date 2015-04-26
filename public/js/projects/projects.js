@@ -6,43 +6,20 @@ module.exports = function(ngModule)
             restrict: "E",
             scope : {},
             template : require("./projects.html"),
-            controller : function(Projects, SweetAlert)
+            controller : function(Api, Alerts)
             {
                 var vm = this;
 
-                vm.projects = {};
-                vm.new = {name: ''};
-
-                vm.get = function(){
-                    vm.new.name = null;
-                    Projects.get(function(data){
-                        vm.projects = data.data;
-                    });
-                }
-
-                vm.get();
-
-                vm.add = function()
+                vm.getAll = function()
                 {
-                    Projects.save(vm.new, vm.get);
-                }
+                    Api.getAll('Projects')
+                        .then(function(projects)
+                        {
+                            vm.projects = projects;
+                        });            
+                }                
 
-                vm.delete = function(id){
-                    SweetAlert.swal({
-                            title: "Are you sure?",
-                            text: "The project and all his repositories will be deleted!",
-                            type: "warning",
-                            showCancelButton: true,
-                            confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, delete it!",
-                            cancelButtonText: "No, cancel plx!",
-                            closeOnConfirm: true,
-                            closeOnCancel: true },
-                        function(isConfirm){
-                            if (isConfirm) {
-                                Projects.delete({id:id}, vm.get);
-                            }
-                        });
-                }
+                vm.getAll();                                
             },
             controllerAs : 'projects'
         }
