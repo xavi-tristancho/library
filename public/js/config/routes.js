@@ -8,6 +8,10 @@ module.exports = function(ngModule)
             .state('home', {
                 url: "/",
                 templateUrl: "/views/partials/dashboard.html"
+            })
+            .state('viewProject', {
+                url: "/projects/:id",
+                templateUrl: "/views/projects/show.html"
             });
     });
 }
