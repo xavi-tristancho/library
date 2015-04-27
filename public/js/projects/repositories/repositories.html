@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-md-6">
+        <add-resource params="{ projectId : projectId }" get='repositories.getAll()' resource='Repositories' placeholder='user/repository'></add-resource>
+    </div>
+    <div class="col-md-6"></div>
+</div>
+
+<div class="list-group repositories">
+    <div class="row" ng-repeat="rows in repositories.repositories">
+        <div class="col-md-4" ng-repeat="repository in rows">
+            <div class="well">
+                <div class="row vertical-align">
+                    <div class="col-md-7">
+                        <a ng-if="repository.homepage" target="_blank" ng-href="{{ repository.homepage | url }}"><label>{{ repository.name }}</label></a>
+                        <label ng-if="!repository.homepage">{{ repository.name }}</label>                  
+                    </div>
+                    <div class="col-md-5 icons vertical-align">
+                        <i class="fa-2x icon-{{ repository.language | lowercase }}"></i>
+                        <a target="_blank" ng-href="{{ repository.html_url }}"><i class="fa fa-2x fa-github"></i></a>
+                        <delete-resource params="{ projectId : projectId, repositoryId : repository.id }" get='repositories.getAll()' resource='Repositories'></delete-resource>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
