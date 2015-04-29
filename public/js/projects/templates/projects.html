@@ -39,7 +39,11 @@
             </div>
             <div class="panel-footer">
                 <div class="row">
-                    <div class="col-md-1"></div>
+                    <div class="col-md-1">
+                        <a ng-href="{{ 'api/projects/' + project.id + '/bower' }}">
+                            <button type="button" class="btn btn-primary">Generate bower.json</button>
+                        </a>
+                    </div>
                     <div class="col-md-10"></div>
                     <div class="col-md-1">
                         <delete-resource params=" { projectId : project.id }" get='projects.getAll()' resource='Projects'></delete-resource>

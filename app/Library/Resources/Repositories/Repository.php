@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Repository extends Model {
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'bower_name'];
 
     public function projects()
     {

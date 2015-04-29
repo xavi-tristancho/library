@@ -9,6 +9,7 @@ use Library\Resources\Projects\Project;
 use Library\Resources\Repositories\CreateRepositoryRequest;
 use Library\Resources\Repositories\Repository;
 use Library\Resources\Repositories\RepositoryTransformer;
+use Library\Github\GithubApi;
 use Illuminate\Support\Facades\Request;
 use Sorskod\Larasponse\Larasponse;
 
@@ -62,7 +63,9 @@ class RepositoriesController extends ApiController {
 
         if(!$repository)
         {
-            $repository = Repository::create(Request::all());
+            $fields = Request::all();
+            $fields['bower_name'] = GithubApi::getBowerName($fields['name']);
+            $repository = Repository::create($fields);
         }
 
         $project->repositories()->attach($repository->id);

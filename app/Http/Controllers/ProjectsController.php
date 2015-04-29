@@ -1,5 +1,6 @@
 <?php namespace Library\Http\Controllers;
 
+use Illuminate\Support\Facades\File;
 use Library\Http\Requests;
 use Library\Resources\Projects\CreateProjectRequest;
 use Library\Resources\Projects\Project;
@@ -109,5 +110,30 @@ class ProjectsController extends ApiController {
 
         return $this->respondNotFound("The Project doesn't exist");
 	}
+
+    public function bower($id)
+    {
+        $project = Project::find($id);
+
+        if($project)
+        {
+            $repositories = $project->repositories;
+
+            $body = "{\n\t \"name\" : \"{$project->name}\",\n\t \"dependencies\": {\n";
+
+            foreach($repositories as $repository)
+            {
+                $body .= "\t\t\"{$repository->bower_name}\" : \"latest\",\n";
+            }
+
+            $body = substr($body, 0, strlen($body) -2);
+
+            $body .= "\n\t}\n}";
+
+            File::put('file/bower.json', $body);
+
+            return redirect('file/bower.json');
+        }
+    }
 
 }

@@ -9,6 +9,7 @@ Route::get('/', function()
 Route::group(array('prefix' => 'api'), function() 
 {
 	App::bind('League\Fractal\Serializer\SerializerAbstract', 'League\Fractal\Serializer\DataArraySerializer');
+    Route::get('projects/{projectId}/bower', 'ProjectsController@bower');
 	Route::resource('projects', 'ProjectsController');
     Route::resource('projects.repositories', 'RepositoriesController');
 });
