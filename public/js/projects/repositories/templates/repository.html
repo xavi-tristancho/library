@@ -1,0 +1,13 @@
+<div class="well">
+    <div class="row vertical-align">
+        <div class="col-md-7">
+            <a ng-if="repo.homepage" target="_blank" ng-href="{{ repo.homepage | url }}"><label>{{ repo.name }}</label></a>
+            <label ng-if="!repo.homepage">{{ repo.name }}</label>                  
+        </div>
+        <div class="col-md-5 icons vertical-align">
+            <i class="fa-2x icon-{{ repo.language | lowercase }}"></i>
+            <a target="_blank" ng-href="{{ repo.html_url }}"><i class="fa fa-2x fa-github"></i></a>
+            <delete-resource params="{ projectId : projectId, repositoryId : repo.id }" get='get()' resource='Repositories'></delete-resource>
+        </div>
+    </div>                
+</div>
