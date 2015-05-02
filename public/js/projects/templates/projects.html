@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <add-resource get='projects.getAll()' resource='Projects' placeholder='Project Name'></add-resource>        
+        <add-resource get="projects.getAll()" resource="Projects" placeholder="{{ 'resources.projects.create' | translate }}"></add-resource>        
     </div> 
 </div>
 
@@ -21,32 +21,17 @@
         <div ng-repeat="project in projects.projects | filter: projects.search" class="panel panel-primary">
             <div class="panel-heading">                
                 <div class="row vertical-align">
-                    <div class="col-md-10">
-                        <h5>{{ project.name | ucfirst}}</h5>    
+                    <div class="col-md-2">
+                        <h4>{{ project.name | ucfirst}}</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <project-statistics-labels id="project.id"></project-statistics-labels>
                     </div>
                     <div class="col-md-2">
-                        <button ui-sref="viewProject({ id : project.id })" type="button" class="btn btn-default btn-block">
-                            <i class="fa fa-eye"></i>
-                            View
-                        </button>
+                        <view-resource route="viewProject" params="{ id : project.id }"></view-resource>
                     </div>
-                </div>
-            </div>
-            <div class="panel-body">
-                <div class="list-group">                    
-                    <repositories project="project.id"></repositories>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-md-1">
-                        <a ng-href="{{ 'api/projects/' + project.id + '/bower' }}">
-                            <button type="button" class="btn btn-primary">Generate bower.json</button>
-                        </a>
-                    </div>
-                    <div class="col-md-10"></div>
-                    <div class="col-md-1">
-                        <delete-resource params=" { projectId : project.id }" get='projects.getAll()' resource='Projects'></delete-resource>
+                    <div class="col-md-2">
+                        <delete-resource params="{ projectId : project.id }" get='projects.getAll()' resource='Projects'></delete-resource>
                     </div>
                 </div>
             </div>
