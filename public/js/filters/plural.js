@@ -4,7 +4,7 @@ module.exports = function(ngModule) {
     {
         return function(word)
         {       
-            var end = word.charAt(word.length);
+            var end = word.charAt(word.length - 1);
                         
             if(end == 'y')
             {
