@@ -17,12 +17,15 @@ module.exports = function(ngModule)
 
                 vm.save = function()
                 {
-                    Api.save($scope.resource, vm.new, $scope.params)
+                    if(vm.new != null)
+                    {
+                        Api.save($scope.resource, vm.new, $scope.params)
                         .then(function(projects)
                         {                            
                             $scope.get();
                             vm.new.name = null;
                         });
+                    }                    
                 }            
             },
             controllerAs : 'button'
