@@ -2,20 +2,28 @@
 	"resources" : {
 		"projects" : {
 			"name" : "project",
-			"delete" : "project and all it's repositories"
+			"delete" : "project and all it's repositories",
+			"create" : "Project Name"
 		},
 		"repositories" : {
 			"name" : "repository",
-			"delete" : "repository"
+			"delete" : "repository",
+			"create" : "user/repository"
 		}
 	},
 	"alerts" : {
-		"delete" : "The {{ message }} will be deleted!"
+		"confirm" : {
+			"title" : "Are you sure?",
+			"message" : "The {{ message }} will be deleted!",
+			"cancel" : "No, cancel plx!",
+			"confirm" : "Yes, delete it!"
+		}		
 	},
 	"notifications" : {
 		"done" : "Done!"
 	},
 	"actions" : {
-		"add" : "Add"
+		"add" : "Add",
+		"view" : "View"
 	}
 }
