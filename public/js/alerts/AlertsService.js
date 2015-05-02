@@ -1,18 +1,18 @@
 module.exports = function(ngModule) {
 
-    function Alerts(SweetAlert)
+    function Alerts($translate, SweetAlert)
     {
     	this.confirm = function(text, callback)
         {
             var sw = SweetAlert.swal(
             {
-                title: "Are you sure?",
+                title: $translate.instant('alerts.confirm.title'),
                 text: text,
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                cancelButtonText: "No, cancel plx!",
+                confirmButtonText: $translate.instant('alerts.confirm.confirm'),
+                cancelButtonText: $translate.instant('alerts.confirm.cancel'),
                 closeOnConfirm: true,
                 closeOnCancel: true },
             function(isConfirm)
