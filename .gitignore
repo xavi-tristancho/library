@@ -1,6 +1,5 @@
 composer.lock
 /public/js/bundle.js
-/storage
 npm-debug.log
 /config/github.php
 /public/bower_components
