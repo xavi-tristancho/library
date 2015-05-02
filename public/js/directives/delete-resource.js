@@ -16,7 +16,7 @@ module.exports = function(ngModule)
 
                 vm.delete = function()
                 {
-                    var text = $translate.instant('alerts.delete', { message: $translate.instant('resources.' + $scope.resource.toLowerCase() + '.delete') });
+                    var text = $translate.instant('alerts.confirm.message', { message: $translate.instant('resources.' + $scope.resource.toLowerCase() + '.delete') });
                     Alerts.confirm(text, function()
                     {                        
                         Api.delete($scope.resource, $scope.params)
