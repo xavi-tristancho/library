@@ -18,6 +18,8 @@
     "bootstrap": "~3.3.4",
     "fontawesome": "~4.3.0",
     "sweetalert": ">=0.3.0",
-    "angularjs-toaster": "~0.4.12"
+    "angularjs-toaster": "~0.4.12",
+    "angular-sweetalert": "latest",
+    "angular-translate-loader-static-files" : "latest"
   }
 }
