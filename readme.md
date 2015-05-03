@@ -14,6 +14,10 @@ $ npm install
 $ composer install
 ```
 
+```
+$ webpack
+```
+
 public folder
 ```
 $ bower install
