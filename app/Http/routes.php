@@ -10,6 +10,9 @@ Route::group(array('prefix' => 'api'), function()
 {
 	App::bind('League\Fractal\Serializer\SerializerAbstract', 'League\Fractal\Serializer\DataArraySerializer');
 
+    Route::post('register', 'SessionsController@register');
+    Route::post('login', 'SessionsController@login');
+
     Route::group(array('prefix' => 'statistics'), function()
     {
         Route::resource('projects', 'ProjectsStatisticsController');
