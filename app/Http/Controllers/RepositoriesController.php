@@ -25,6 +25,7 @@ class RepositoriesController extends ApiController {
      */
     function __construct(Larasponse $fractal, GitHubManager $github)
     {
+        $this->middleware('jwt.auth');
         $this->fractal = $fractal;
         $this->github = $github;
 
@@ -64,7 +65,14 @@ class RepositoriesController extends ApiController {
         if(!$repository)
         {
             $fields = Request::all();
-            $fields['bower_name'] = GithubApi::getBowerName($fields['name']);
+            $bowerName = GithubApi::getBowerName($fields['name']);
+
+            if(! $bowerName)
+            {
+                return $this->respondFailedValidation('The Repository doesn\'t have a package.json or bower.json file');
+            }
+
+            $fields['bower_name'] = $bowerName;
             $repository = Repository::create($fields);
         }
 

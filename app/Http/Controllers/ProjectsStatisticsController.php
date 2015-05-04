@@ -17,6 +17,7 @@ class ProjectsStatisticsController extends ApiController {
      */
     function __construct(Larasponse $fractal)
     {
+        $this->middleware('jwt.auth');
         $this->fractal = $fractal;
 
         $includes = Request::get('includes');
