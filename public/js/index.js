@@ -5,6 +5,8 @@ require('angular-animate');
 require('angular-ui-router');
 require('angular-filter');
 require('angular-translate');
+require('angular-local-storage');
+require('angular-bootstrap');
 
 var ngModule = angular.module('app', [
 	'ngAnimate',
@@ -13,16 +15,20 @@ var ngModule = angular.module('app', [
     'angular.filter',
     'oitozero.ngSweetAlert',
     'toaster',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'LocalStorageModule',
+    'ui.bootstrap'
 ]);
 
 require('./config')(ngModule);
 require('./locale')(ngModule);
+require('./auth')(ngModule);
 require('./api')(ngModule);
 require('./alerts')(ngModule);
 require('./notifications')(ngModule);
 require('./directives')(ngModule);
 require('./filters')(ngModule);
+require('./users')(ngModule);
 require('./projects')(ngModule);
 require('./projects/repositories')(ngModule);
 require('./github')(ngModule);
