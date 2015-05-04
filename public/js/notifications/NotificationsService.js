@@ -7,9 +7,9 @@ module.exports = function(ngModule) {
     		toaster.success({title: $translate.instant('notifications.done'), body: response.message});
     	}
 
-        this.error = function(response)
+        this.error = function(error)
         {
-            toaster.error(response.status_code.toString(), response.message);        	   		
+            toaster.error(error.status_code.toString(), error.message);        	   		
         }
 
         return this;
