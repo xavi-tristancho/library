@@ -8,7 +8,8 @@
 		"laravel/framework": "5.0.*",
         "sorskod/larasponse": "dev-L5",
         "graham-campbell/github": "~2.0",
-        "guzzlehttp/guzzle": "~5.0"
+        "guzzlehttp/guzzle": "~5.0",
+		"tymon/jwt-auth": "0.5.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
