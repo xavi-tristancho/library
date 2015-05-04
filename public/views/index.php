@@ -18,7 +18,7 @@
 
 <toaster-container></toaster-container>
 
-<div ng-include="'views/partials/navbar.html'"></div>
+<navbar ng-if="token"></navbar>
 
 <div ui-view class="container">
 
