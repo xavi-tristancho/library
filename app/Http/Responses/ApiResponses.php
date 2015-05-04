@@ -74,6 +74,26 @@ trait ApiResponses{
     }
 
     /**
+     * Respond Bad Request
+     * @param String $message
+     * @return Response
+     */
+    public function respondBadRequest($message = 'Bad Request')
+    {
+        return $this->setStatusCode(400)->respondWithError($message);
+    }
+
+    /**
+     * Respond Unauthorized Access
+     * @param String $message
+     * @return Response
+     */
+    public function respondUnauthorized($message = 'Unauthorized Access')
+    {
+        return $this->setStatusCode(401)->respondWithError($message);
+    }
+
+    /**
      * Respond not Found
      * @param String $message
      * @return Response
@@ -81,16 +101,6 @@ trait ApiResponses{
     public function respondNotFound($message = 'Not Found')
     {
         return $this->setStatusCode(404)->respondWithError($message);
-    }
-
-    /**
-     * Respond Created
-     * @param String $message
-     * @return Response
-     */
-    public function respondCreated($message = 'Created')
-    {
-        return $this->setStatusCode(201)->respondWithSuccess($message);
     }
 
     /**
@@ -121,5 +131,15 @@ trait ApiResponses{
     public function respondDeleted($message = 'Deleted')
     {
         return $this->setStatusCode(200)->respondWithSuccess($message);
+    }
+
+    /**
+     * Respond Created
+     * @param String $message
+     * @return Response
+     */
+    public function respondCreated($message = 'Created')
+    {
+        return $this->setStatusCode(201)->respondWithSuccess($message);
     }
 }
