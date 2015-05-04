@@ -21,7 +21,12 @@ class GithubApi {
             }
         }
 
-        $json =  json_decode($response->getBody());
-        return $json->name;
+        if($response != null)
+        {
+            $json =  json_decode($response->getBody());
+            return $json->name;
+        }
+
+        return false;
     }
 } 
