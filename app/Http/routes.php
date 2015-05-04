@@ -13,6 +13,9 @@ Route::group(array('prefix' => 'api'), function()
     Route::post('register', 'SessionsController@register');
     Route::post('login', 'SessionsController@login');
 
+    Route::get('users/me', 'UsersController@me');
+    Route::resource('users', 'UsersController');
+
     Route::group(array('prefix' => 'statistics'), function()
     {
         Route::resource('projects', 'ProjectsStatisticsController');
