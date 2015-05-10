@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRepositoriesTable extends Migration {
+class CreateManagersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,11 @@ class CreateRepositoriesTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('repositories', function(Blueprint $table)
+        Schema::create('managers', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('manager_id');
             $table->string('name')->unique();
-            $table->string('dependency_name')->nullable();
+            $table->string('file');
             $table->timestamps();
         });
 	}
@@ -29,7 +28,7 @@ class CreateRepositoriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('repositories');
+		Schema::drop('managers');
 	}
 
 }

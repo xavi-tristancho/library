@@ -19,6 +19,7 @@ class RepositoryTransformer extends TransformerAbstract{
         return [
             'id'               => $repository['id'],
             'name'             => $repository['name'],
+            'manager'          => $repository['manager'],
             'full_name'        => $repository['full_name'],
             'description'      => $repository['description'],
             'html_url'         => $repository['html_url'],

@@ -1,39 +1,66 @@
 <?php namespace Library\Resources\Projects;
 
+use Library\Resources\Managers\ManagerTransformer;
 
 class ProjectStatistics {
 
     private $project;
 
-    private $githubRepositories;
+    private $repositories = [];
+
+    private $repositoriesCount = [];
+
+    protected $managerTransformer;
 
     public function __construct($project)
     {
         $this->setProject($project);
+        $this->managerTransformer = new ManagerTransformer();
     }
 
-    function setProject($project)
+    public function setProject($project)
     {
         $this->project = $project;
     }
 
-    function getProject()
+    public function getProject()
     {
         return $this->project;
     }
 
-    function setGithubRepositories($githubRepositories)
+    public function setRepositories($repositories)
     {
-        $this->githubRepositories = $githubRepositories;
+        $this->repositories = $repositories;
     }
 
-    function getGithubRepositories()
+    public function getRepositoriesCount()
     {
-        return $this->githubRepositories;
-    }
+        $found = null;
 
-    function getGithubRepositoriesCount()
-    {
-        return count($this->githubRepositories);
+        foreach($this->repositories as $repository)
+        {
+            foreach($this->repositoriesCount as $index => $repositoryCount)
+            {
+                if(array_key_exists('manager', $repositoryCount))
+                {
+                    if($this->repositoriesCount[$index]['manager'] == $this->managerTransformer->transform($repository->manager))
+                    {
+                        $this->repositoriesCount[$index]['count'] = $this->repositoriesCount[$index]['count'] + 1;
+                        $found = true;
+                    }
+                }
+                else
+                {
+                    $found = false;
+                }
+            }
+
+            if(! $found)
+            {
+                array_push($this->repositoriesCount, ['manager' => $this->managerTransformer->transform($repository->manager), 'count' => 1]);
+            }
+        }
+
+        return $this->repositoriesCount;
     }
 } 
