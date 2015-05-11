@@ -43,10 +43,14 @@ class ProjectStatistics {
             {
                 if(array_key_exists('manager', $repositoryCount))
                 {
-                    if($this->repositoriesCount[$index]['manager'] == $this->managerTransformer->transform($repository->manager))
+                    if($this->repositoriesCount[$index]['manager'] === $this->managerTransformer->transform($repository->manager))
                     {
                         $this->repositoriesCount[$index]['count'] = $this->repositoriesCount[$index]['count'] + 1;
                         $found = true;
+                    }
+                    else
+                    {
+                        $found = false;
                     }
                 }
                 else
