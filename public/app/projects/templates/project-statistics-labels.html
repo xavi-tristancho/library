@@ -1,0 +1,3 @@
+<span ng-repeat="dependency in project.dependencies" class="label label-default dependency-label">
+	{{ dependency.count }} {{ dependency.manager.name | ucfirst }} {{ 'resources.repositories.dependency' | translate | ucfirst | plural : dependency.count}}
+</span>
