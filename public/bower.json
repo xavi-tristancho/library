@@ -20,7 +20,6 @@
     "sweetalert": ">=0.3.0",
     "angularjs-toaster": "~0.4.12",
     "angular-sweetalert": "latest",
-    "angular-translate-loader-static-files": "latest",
-    "angular-loading-bar": "~0.7.1"
+    "angular-translate-loader-static-files": "latest"
   }
 }
