@@ -18,6 +18,10 @@ module.exports = function(ngModule)
             .state('viewProject', {
                 url: "/projects/:id",
                 templateUrl: "/views/projects/show.html"
+            })
+            .state('options', {
+                url: "/options",
+                templateUrl: "/views/options/index.html"
             });
     });
 }

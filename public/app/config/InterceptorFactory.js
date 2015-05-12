@@ -17,13 +17,10 @@ module.exports = function(ngModule)
             },
             'responseError': function (response)
             {
-                if (response.status === 401 || response.status === 403 || response.status === 400) {
-                    $location.path('/login');
-                }
-
                 if (response.status === 404)
                 {
                     if(response.data.error == 'user_not_found')
+                        $rootScope.token = null;
                         $location.path('/login');
                 }
                                 

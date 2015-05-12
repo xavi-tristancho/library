@@ -4,11 +4,13 @@ module.exports = function(ngModule)
     {
         return {
             restrict: "E",
+            transclude: true,
             scope : {
                 resource : '@',
                 placeholder : '@',
                 params : '=',
-                get : '&'
+                get : '&',
+                transclude : "@",                
             },
             template : require("./templates/add-resource.html"),
             controller : function($scope, Api)
@@ -18,12 +20,15 @@ module.exports = function(ngModule)
                 vm.save = function()
                 {
                     if(vm.new != null)
-                    {
+                    {                        
                         Api.save($scope.resource, vm.new, $scope.params)
                         .then(function(projects)
                         {                            
                             $scope.get();
-                            vm.new.name = null;
+                            vm.new = null;
+                        }, function()
+                        {
+                            console.log('error');
                         });
                     }                    
                 }            

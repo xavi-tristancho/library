@@ -17,7 +17,8 @@ var ngModule = angular.module('app', [
     'toaster',
     'pascalprecht.translate',
     'LocalStorageModule',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-loading-bar'
 ]);
 
 require('./config')(ngModule);
@@ -32,3 +33,4 @@ require('./users')(ngModule);
 require('./projects')(ngModule);
 require('./projects/repositories')(ngModule);
 require('./github')(ngModule);
+require('./managers')(ngModule);

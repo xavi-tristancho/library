@@ -4,6 +4,14 @@ module.exports = function(ngModule) {
   {
     var vm = this;
 
+    vm.token = localStorageService.get('token');
+    vm.tokenClaims = Auth.getTokenClaims();
+
+    if(vm.token != null)
+    {
+      $state.go('home');
+    }
+
     function successAuth(res) {       
        localStorageService.set('token', res.token);
        $rootScope.token = res.token;
@@ -18,9 +26,6 @@ module.exports = function(ngModule) {
 
        Auth.signin(formData, successAuth);
     };    
-
-    vm.token = localStorageService.get('token');
-    vm.tokenClaims = Auth.getTokenClaims();
   }
 
   ngModule.controller('SessionsController', SessionsController);

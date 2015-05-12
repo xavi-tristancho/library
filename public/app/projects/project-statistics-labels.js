@@ -16,13 +16,8 @@ module.exports = function(ngModule)
                 {
                     Api.getAll('ProjectsStatistics', { projectId : $scope.id })
                         .then(function(statistics)
-                        {
-                            vm.statistics = statistics;
-
-                            var name = $translate.instant('resources.repositories.name');
-                            name = (vm.statistics.github_repositories_count > 1) ? $filter('plural')(name) : name;
-
-                            vm.repositories = { name : name };
+                        {                            
+                            vm.dependencies = statistics.repositories_count;
                         });            
                 }                             
 

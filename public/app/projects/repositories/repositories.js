@@ -5,17 +5,19 @@ module.exports = function(ngModule)
         return {
             restrict: "E",
             scope : {
-                projectId : "=project"
+                projectId : "=project",
+                manager : "@"
             },
+            transclude: true,
             template : require("./templates/repositories.html"),
-            controller : function($scope, $stateParams, Api, Repositories, Github)
+            controller : function($scope, $http, $stateParams, Api, Repositories, Github)
             {
                 var vm = this;        
                 vm.projectId = ($scope.projectId != undefined) ? $scope.projectId : parseInt($stateParams.id);
 
                 vm.getAll = function()
                 {        
-                    Api.getAll('Repositories', { projectId : vm.projectId })
+                    Api.getAll('Repositories', { manager : $scope.manager, projectId : vm.projectId })
                         .then(function(repositories)
                         {
                             vm.repositories = chunk(repositories, 3);
@@ -33,7 +35,7 @@ module.exports = function(ngModule)
                   }
 
                   return newArr;
-                }
+                }                
             },
             controllerAs : 'repositories'
         }

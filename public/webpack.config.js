@@ -1,11 +1,11 @@
 module.exports = {
-    context : __dirname + "/public/js",
+    context : __dirname + "/app",
     entry : "./index.js",
     output : {
-        path : __dirname + "/public/js",
+        path : __dirname + "/app",
         filename : "bundle.js"
     },
-
+    devtool: 'eval',
     module : {
         loaders : [
             {test : /\.html/, loader : 'raw', exclude: /node_modules/ }

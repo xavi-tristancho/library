@@ -5,7 +5,8 @@ module.exports = function(ngModule) {
         return $resource('api/projects/:projectId/repositories/:repositoryId', 
         	{ 
         		projectID : '@projectID',
-        		repositoryId : '@repositoryId' 
+        		repositoryId : '@repositoryId',
+        		manager : '@manager'
         	});
     }
 

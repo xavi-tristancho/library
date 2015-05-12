@@ -5,7 +5,7 @@ module.exports = function(ngModule)
         $translateProvider.preferredLanguage('en');
 
         $translateProvider.useStaticFilesLoader({
-          prefix: 'js/locale/',
+          prefix: 'app/locale/',
           suffix: '.json'
         });
     });

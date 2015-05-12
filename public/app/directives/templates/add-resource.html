@@ -1,9 +1,12 @@
 <form ng-submit="button.save()">
 	<div class="row">
-		<div class="col-md-6">
+		<div ng-if="!transclude"class="col-md-6">
 			<input ng-model="button.new.name" class="form-control" placeholder="{{ placeholder }}">
 		</div>
-		<div class="col-md-6">
+		<div ng-if="transclude">
+			<ng-transclude></ng-transclude>
+		</div>
+		<div ng-class="{'col-md-6': !transclude, 'col-md-4': transclude}">
 			<button type="submit" class="btn btn-success btn-block">				
 				<i class="fa fa-1x fa-plus-circle"></i>
 			</button>

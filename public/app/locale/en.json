@@ -6,9 +6,20 @@
 			"create" : "Project Name"
 		},
 		"repositories" : {
-			"name" : "repository",
+			"name" : "repository",			
+			"dependency" : "dependency",					
 			"delete" : "repository",
 			"create" : "user/repository"
+		},
+		"managers" : {
+			"name" : "manager",
+			"delete" : "manager",
+			"create" : "Manager Name",
+			"uses" : "uses",
+			"file" : "File"
+		},
+		"options" : {
+			"name" : "option"
 		}
 	},
 	"alerts" : {
