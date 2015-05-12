@@ -2,6 +2,11 @@
   font-size: .85em;
 }
 
+.dependency-label:nth-child(odd){
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 .navbar {
   border-radius: 0;
 }
@@ -11,7 +16,8 @@
 }
 
 .projects, 
-.repositories {
+.repositories,
+.managers {
     margin-top: 10px;
 }
 
@@ -25,6 +31,10 @@
 
 .repositories label{
 	cursor: pointer;
+}
+
+repositories .panel{
+  margin-bottom: 100px;
 }
 
 .panel-footer img{
@@ -76,4 +86,21 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+#loading-bar .bar {
+  background: #FFF;
+  height: 3px;
+}
+
+#loading-bar .peg {
+  -moz-box-shadow: #FFF 1px 0 6px 1px;
+  -ms-box-shadow: #FFF 1px 0 6px 1px;
+  -webkit-box-shadow: #FFF 1px 0 6px 1px;
+  box-shadow: #FFF 1px 0 6px 1px;  
+}
+
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  #FFF;
+  border-left-color: #FFF;  
 }
