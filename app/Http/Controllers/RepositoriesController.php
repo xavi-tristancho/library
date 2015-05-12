@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use GrahamCampbell\GitHub\GitHubManager;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Library\Http\Requests;
@@ -45,9 +46,8 @@ class RepositoriesController extends ApiController {
     public function index($projectId)
     {
         $repositories = Project::find($projectId)->repositories;
-        $githubRepositories = $this->getRepositories($repositories);
 
-        return $this->fractal->collection($githubRepositories, new RepositoryTransformer());
+        return $this->fractal->collection($repositories, new RepositoryTransformer());
     }
 
     /**
@@ -64,16 +64,14 @@ class RepositoriesController extends ApiController {
 
         if(!$repository)
         {
-            $fields = Request::all();
-            $bowerName = GithubApi::getBowerName($fields['name']);
-
-            if(! $bowerName)
-            {
-                return $this->respondFailedValidation('The Repository doesn\'t have a package.json or bower.json file');
+            try{
+                $fields = GithubApi::getDependencyName(Request::all());
+                $repository = Repository::create($fields);
             }
-
-            $fields['bower_name'] = $bowerName;
-            $repository = Repository::create($fields);
+            catch(QueryException $e)
+            {
+                return $this->respondFailedValidation('Please fill all the fields');
+            }
         }
 
         $project->repositories()->attach($repository->id);
@@ -182,30 +180,5 @@ class RepositoriesController extends ApiController {
         {
             Repository::find($repository->id)->delete();
         }
-    }
-
-    /**
-     * @param $repositories
-     * @return array
-     */
-    private function getRepositories($repositories)
-    {
-        $githubRepositories = [];
-
-        foreach ($repositories as $repository) {
-            if (Cache::has($repository->name)) {
-                $githubRepository = Cache::get($repository->name);
-            } else {
-                $name = explode('/', $repository->name);
-                $githubRepository = $this->github->repo()->show($name[0], $name[1]);
-                $expiresAt = Carbon::now()->addDays(1);
-                Cache::add($repository->name, $githubRepository, $expiresAt);                
-            }
-
-            $githubRepository['id'] = $repository->id;
-            array_push($githubRepositories, $githubRepository);            
-        }
-
-        return $githubRepositories;
     }
 }

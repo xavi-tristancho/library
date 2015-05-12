@@ -9,9 +9,9 @@ class ProjectsStatisticsTransformer extends TransformerAbstract{
         $project =  $projectStatistic->getProject();
 
         return [
-            'id'                        => $project->id,
-            'name'                      => $project->name,
-            'github_repositories_count' => $projectStatistic->getGithubRepositoriesCount(),
+            'id'                 => $project->id,
+            'name'               => $project->name,
+            'repositories_count' => $projectStatistic->getRepositoriesCount(),
         ];
     }
 }
