@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-10">
+        <h3>{{ 'resources.managers.name' | translate | plural | ucfirst }}</h3>
+    </div>
+</div>
+
+<div class="row">    
+    <div class="col-md-12">
+        <add-resource get="managers.getAll()" resource="Managers" placeholder="{{ 'resources.managers.create' | translate }}" transclude="1">
+            <div class="col-md-4">                                            
+                <input ng-model="$parent.button.new.name" class="form-control" placeholder="{{ 'resources.managers.create' |  translate }}">
+            </div>
+            <div class="col-md-4">
+                <input ng-model="$parent.button.new.file" class="form-control" placeholder="{{ 'resources.managers.file' |  translate }}">
+            </div>
+        </add-resource>        
+    </div> 
+</div>
+
+<div class="row managers">
+    <div class="col-md-12">
+        <div ng-repeat="manager in managers.managers" class="panel panel-primary">
+            <div class="panel-heading">                
+                <div class="row vertical-align">
+                    <div class="col-md-4">
+                        <h4>{{ manager.name | ucfirst}} {{ 'resources.managers.uses' | translate }} {{ manager.file }}</h4>
+                    </div>                    
+                    <div class="col-md-6"></div>
+                    <div class="col-md-2">
+                        <delete-resource params="{ managerId : manager.id }" get='managers.getAll()' resource='Managers'></delete-resource>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

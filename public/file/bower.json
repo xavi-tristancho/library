@@ -1,0 +1,9 @@
+{
+	 "name" : "library",
+	 "dependencies": {
+		"" : "latest",
+		"" : "latest",
+		"" : "latest",
+		"" : "latest"
+	}
+}
