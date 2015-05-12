@@ -50,7 +50,7 @@ class ProjectsStatisticsController extends ApiController {
         $project = Project::find($projectId);
 
         $projectStatistics = new ProjectStatistics($project);
-        $projectStatistics->setGithubRepositories($project->repositories);
+        $projectStatistics->setRepositories($project->repositories);
 
         return $this->fractal->item($projectStatistics, new ProjectsStatisticsTransformer());
     }

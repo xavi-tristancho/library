@@ -2,31 +2,41 @@
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Library\Resources\Managers\Manager;
 
 class GithubApi {
 
 
-    public static function getBowerName($repository)
+    public static function getDependencyName($fields)
     {
-        $name = explode('/', $repository);
+        $manager = Manager::find($fields['manager']);
+        $name = explode('/', $fields['name']);
+        $url = "http://raw.githubusercontent.com/{$name[0]}/{$name[1]}/master/";
+
         $client = new Client();
         $response = null;
+
         try{
-            $response = $client->get("http://raw.githubusercontent.com/{$name[0]}/{$name[1]}/master/package.json");
-        }catch (RequestException $e){
-            try{
-                $response = $client->get("http://raw.githubusercontent.com/{$name[0]}/{$name[1]}/master/bower.json");
-            }catch (RequestException $e) {
-
-            }
+            $response = $client->get($url . $manager->file);
         }
-
-        if($response != null)
+        catch (\ErrorException $e)
         {
-            $json =  json_decode($response->getBody());
-            return $json->name;
+            return ["error" => "The repository name is not valid"];
+        }
+        catch (RequestException $e)
+        {
+            return ["error" => "The repository does not exist"];
         }
 
-        return false;
+        try{
+            $json =  json_decode($response->getBody());
+            return [
+                "name" => $fields["name"],
+                "manager_id" => $fields["manager"],
+                "dependency_name" => $json->name
+            ];
+        }catch (\Exception $e) {
+            return ["error" => "There isn't a name field in the {$manager->file}"];
+        }
     }
 } 
