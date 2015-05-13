@@ -1,0 +1,14 @@
+<div class="well">
+    <div class="row vertical-align">
+        <div class="col-md-11">            
+            <a ng-href="{{ 'http://' + link.url }}" target="_blank">
+            	<strong>
+            		{{ link.title }}
+            	</strong>
+            </a>
+        </div>
+        <div class="col-md-1 icons vertical-align">                        
+            <delete-resource params="{ projectId : projectId, linkId : link.id }" get='get()' resource='Links'></delete-resource>
+        </div>
+    </div>                
+</div>

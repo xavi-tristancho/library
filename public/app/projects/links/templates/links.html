@@ -1,0 +1,39 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">                
+        <div class="row">
+            <div class="col-md-12">
+                <h4>{{ 'resources.links.name' | translate | plural | ucfirst }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-search search-only">
+                    <i class="search-icon glyphicon glyphicon-search"></i>
+                    <input ng-model="links.search" class="form-control search-query">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <add-resource params="{ projectId : links.projectId }" get="links.getAll()" resource="Links" transclude="1">
+                    <div class="col-md-8">
+                        <input required ng-model="$parent.button.new.url" class="form-control" placeholder="{{ 'resources.links.create' | translate }}">
+                    </div>                    
+                </add-resource>
+            </div> 
+        </div>
+
+        <div class="list-group links">
+            <div class="row" ng-repeat="link in links.links | filter: links.search">
+                <div class="col-md-12">
+                    <library-link project="links.projectId" get="links.getAll()" link="link"></library-link>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            
+        </div>
+    </div>
+</div>

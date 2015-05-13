@@ -31,6 +31,5 @@ require('./directives')(ngModule);
 require('./filters')(ngModule);
 require('./users')(ngModule);
 require('./projects')(ngModule);
-require('./projects/repositories')(ngModule);
 require('./github')(ngModule);
 require('./managers')(ngModule);

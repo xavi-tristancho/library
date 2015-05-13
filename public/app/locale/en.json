@@ -11,6 +11,11 @@
 			"delete" : "repository",
 			"create" : "user/repository"
 		},
+		"links" : {
+			"name" : "link",
+			"create" : "url",
+			"delete" : "link"
+		},
 		"managers" : {
 			"name" : "manager",
 			"delete" : "manager",

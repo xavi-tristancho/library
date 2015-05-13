@@ -5,4 +5,6 @@ module.exports = function(ngModule)
     require('./project')(ngModule);
     require('./ProjectsFactory')(ngModule);
     require('./ProjectsStatisticsFactory')(ngModule);
+    require('./repositories')(ngModule);
+    require('./links')(ngModule);
 }
