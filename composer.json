@@ -9,7 +9,8 @@
         "sorskod/larasponse": "dev-L5",
         "graham-campbell/github": "~2.0",
         "guzzlehttp/guzzle": "~5.0",
-		"tymon/jwt-auth": "0.5.*"
+		"tymon/jwt-auth": "0.5.*",
+        "fusonic/opengraph": "@dev"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
