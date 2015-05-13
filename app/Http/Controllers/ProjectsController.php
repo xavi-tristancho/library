@@ -18,7 +18,7 @@ class ProjectsController extends ApiController {
      */
     function __construct(Larasponse $fractal)
     {
-        $this->middleware('jwt.auth');
+        $this->middleware('jwt.auth', ['except' => 'bower']);
 
         $this->fractal = $fractal;
 

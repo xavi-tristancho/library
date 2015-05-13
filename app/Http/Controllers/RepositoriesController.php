@@ -1,9 +1,7 @@
 <?php namespace Library\Http\Controllers;
 
-use Carbon\Carbon;
 use GrahamCampbell\GitHub\GitHubManager;
 use Illuminate\Database\QueryException;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Library\Http\Requests;
 use Library\Resources\Projects\Project;
