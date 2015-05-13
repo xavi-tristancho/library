@@ -16,13 +16,16 @@ module.exports = function(ngModule)
                 return config;
             },
             'responseError': function (response)
-            {
-                if (response.status === 404)
+            {                
+                if (response.status === 404 || response.status === 400)
                 {
-                    if(response.data.error == 'user_not_found')
+                    if(response.data.error == 'user_not_found' || response.data.error == 'token_expired')
+                    {
+                        localStorageService.remove('token');
                         $rootScope.token = null;
-                        $location.path('/login');
-                }
+                        $location.path('login');
+                    }                        
+                }                
                                 
                 return $q.reject(response);
             }
