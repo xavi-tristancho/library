@@ -24,5 +24,7 @@ Route::group(array('prefix' => 'api'), function()
     Route::get('projects/{projectId}/bower', 'ProjectsController@bower');
 	Route::resource('projects', 'ProjectsController');
     Route::resource('projects.repositories', 'RepositoriesController');
+    Route::resource('projects.links', 'LinksController');
+
     Route::resource('managers', 'ManagersController');
 });

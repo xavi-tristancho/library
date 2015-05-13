@@ -10,4 +10,9 @@ class Project extends Model {
     {
         return $this->belongsToMany('Library\Resources\Repositories\Repository');
     }
+
+    public function links()
+    {
+        return $this->hasMany('Library\Resources\Links\Link');
+    }
 }
