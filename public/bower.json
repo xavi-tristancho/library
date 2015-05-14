@@ -22,8 +22,5 @@
     "angular-sweetalert": "latest",
     "angular-translate-loader-static-files": "latest",
     "angular-loading-bar": "~0.7.1"
-  },
-  "resolutions": {
-    "angular": ">1.2.6"
   }
 }
