@@ -57,12 +57,13 @@ class LinksController extends ApiController {
 
         $project = Project::find($projectId);
 
-        $fields['project_id'] = $project->id;
-        $fields['title'] = $tags->title;
-        $fields['description'] = $tags->description;
-        $fields['image'] = $tags->images[0]->url;
-
-        Link::create($fields);
+        Link::create([
+            'project_id' => $project->id,
+            'url' => "http://" . str_replace("www.", "", str_replace("http://", "", $fields['url'])),
+            'title' => $tags->title,
+            'description' => $tags->description,
+            'image' => $tags->images[0]->url
+        ]);
 
         return $this->respondCreated("The Link has been created");
     }

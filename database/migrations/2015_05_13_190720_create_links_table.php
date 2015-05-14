@@ -17,8 +17,8 @@ class CreateLinksTable extends Migration {
             $table->increments('id');
             $table->integer('project_id');
             $table->string('url');
-            $table->string('title');
-            $table->text('description');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });
