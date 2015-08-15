@@ -56,14 +56,26 @@ class RepositoriesController extends ApiController {
      */
     public function store($projectId)
     {
+        $response = null;
         $repository = Repository::where('name', '=', Request::get('name'))->first();
-
         $project = Project::find($projectId);
+
+        if( ! Request::get('manager'))
+        {
+            return $this->respondFailedValidation('Please fill all the fields');
+        }
 
         if(!$repository)
         {
             try{
                 $fields = GithubApi::getDependencyName(Request::all());
+
+                if(array_key_exists('error', $fields))
+                {
+                    return $this->setStatusCode($fields['code'])
+                        ->respondWithError($fields['error']);
+                }
+
                 $repository = Repository::create($fields);
             }
             catch(QueryException $e)

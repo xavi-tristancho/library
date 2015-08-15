@@ -15,4 +15,9 @@ class Project extends Model {
     {
         return $this->hasMany('Library\Resources\Links\Link');
     }
+
+    public function servers()
+    {
+        return $this->hasMany('Library\Resources\Servers\Server');
+    }
 }

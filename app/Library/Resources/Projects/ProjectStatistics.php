@@ -1,6 +1,7 @@
 <?php namespace Library\Resources\Projects;
 
 use Library\Resources\Managers\ManagerTransformer;
+use Illuminate\Support\Facades\DB;
 
 class ProjectStatistics {
 
@@ -28,42 +29,12 @@ class ProjectStatistics {
         return $this->project;
     }
 
-    public function setRepositories($repositories)
-    {
-        $this->repositories = $repositories;
-    }
-
     public function getRepositoriesCount()
     {
-        $found = null;
-
-        foreach($this->repositories as $repository)
-        {
-            foreach($this->repositoriesCount as $index => $repositoryCount)
-            {
-                if(array_key_exists('manager', $repositoryCount))
-                {
-                    if($this->repositoriesCount[$index]['manager'] === $this->managerTransformer->transform($repository->manager))
-                    {
-                        $this->repositoriesCount[$index]['count'] = $this->repositoriesCount[$index]['count'] + 1;
-                        $found = true;
-                    }
-                    else
-                    {
-                        $found = false;
-                    }
-                }
-                else
-                {
-                    $found = false;
-                }
-            }
-
-            if(! $found)
-            {
-                array_push($this->repositoriesCount, ['manager' => $this->managerTransformer->transform($repository->manager), 'count' => 1]);
-            }
-        }
+        $this->repositoriesCount = DB::table('repositories')
+            ->select(DB::raw('manager_id as manager, count(*) as repositories_count'))
+            ->groupBy('manager_id')
+            ->get();
 
         return $this->repositoriesCount;
     }

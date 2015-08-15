@@ -1,7 +1,7 @@
 module.exports = function(ngModule) {
 
-    function Projects($resource)
-    {
+    function Projects($resource, $http)
+    { 
         return $resource('api/projects/:projectId', { projectId : '@projectId' });
     }
 

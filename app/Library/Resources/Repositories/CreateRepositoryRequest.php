@@ -22,7 +22,8 @@ class CreateRepositoryRequest extends Request {
     public function rules()
     {
         return [
-            'name' => 'required|unique:repositories'
+            'name'    => 'required|unique:repositories',
+            'manager' => 'required'
         ];
     }
 

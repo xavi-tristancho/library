@@ -6,5 +6,5 @@
   <label for="inputPassword" class="sr-only">Password</label>
   <input ng-model="session.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
   
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'views.login.title' | translate | ucfirst }} <i ng-show="session.logginIn" class="fa fa-spinner fa-spin"></i></button>
 </form>

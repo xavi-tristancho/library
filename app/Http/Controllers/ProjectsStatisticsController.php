@@ -28,29 +28,11 @@ class ProjectsStatisticsController extends ApiController {
         }
     }
 
-    public function index()
-    {
-        $projects = Project::all();
-
-        $projectsStatistics = [];
-
-        foreach($projects as $project)
-        {
-            $projectStatistics = new ProjectStatistics($project);
-            $projectStatistics->setGithubRepositories($project->repositories);
-
-            array_push($projectsStatistics, $projectStatistics);
-        }
-
-        return $this->fractal->collection($projectsStatistics, new ProjectsStatisticsTransformer());
-    }
-
     public function show($projectId)
     {
         $project = Project::find($projectId);
 
         $projectStatistics = new ProjectStatistics($project);
-        $projectStatistics->setRepositories($project->repositories);
 
         return $this->fractal->item($projectStatistics, new ProjectsStatisticsTransformer());
     }

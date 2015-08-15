@@ -10,12 +10,18 @@ module.exports = function(ngModule)
                 placeholder : '@',
                 params : '=',
                 get : '&',
-                transclude : "@",                
+                transclude : "@",
+                textInput : "@",
             },
             template : require("./templates/add-resource.html"),
             controller : function($scope, Api)
             {
-                var vm = this;                
+                var vm = this;
+
+                $scope.transclude = eval($scope.transclude);
+                $scope.transclude = ($scope.transclude == undefined) ? false : $scope.transclude;
+                $scope.textInput = eval($scope.textInput);
+                $scope.textInput = ($scope.textInput == undefined) ? false : $scope.textInput;
 
                 vm.save = function()
                 {
@@ -26,9 +32,6 @@ module.exports = function(ngModule)
                         {                            
                             $scope.get();
                             vm.new = null;
-                        }, function()
-                        {
-                            console.log('error');
                         });
                     }                    
                 }            

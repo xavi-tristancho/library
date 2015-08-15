@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">                
+        <div class="row">
+            <div class="col-md-12">
+                <h4>{{ 'resources.guides.name' | translate | plural | ucfirst }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-search search-only">
+                    <i class="search-icon glyphicon glyphicon-search"></i>
+                    <input ng-model="guides.search" class="form-control search-query">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <a href="#projects/{{ guides.projectId }}/guides/create" class="btn btn-success btn-block">                
+                    <i class="fa fa-1x fa-plus-circle"></i>
+                </a>
+            </div> 
+        </div>
+
+        <div class="list-group guides">
+            <div class="row" ng-repeat="guide in guides.guides | filter: guides.search">
+                <div class="col-md-12">
+                    <library-guide project="guides.projectId" get="guides.getAll()" guide="guide"></library-guide>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            
+        </div>
+    </div>
+</div>

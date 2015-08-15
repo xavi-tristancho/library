@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="col-md-6">
-        <add-resource get="projects.getAll()" resource="Projects" placeholder="{{ 'resources.projects.create' | translate }}"></add-resource>        
+        <add-resource get="projects.getAll()" resource="Projects" placeholder="{{ 'resources.projects.create' | translate }}"></add-resource>
     </div> 
 </div>
 
@@ -25,7 +25,7 @@
                         <h4>{{ project.name | ucfirst}}</h4>
                     </div>
                     <div class="col-md-6">
-                        <project-statistics-labels id="project.id"></project-statistics-labels>
+                        <!--<project-statistics-labels id="project.id"></project-statistics-labels>-->
                     </div>
                     <div class="col-md-2">
                         <view-resource route="viewProject" params="{ id : project.id }"></view-resource>

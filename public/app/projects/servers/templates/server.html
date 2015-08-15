@@ -1,0 +1,17 @@
+<div class="well">
+    <div class="row vertical-align">        
+        <div class="col-md-10">            
+            <strong>
+                    {{ server.name }} - 
+            </strong>
+            <a ng-href="{{ server.url }}" target="_blank">            	
+                <strong>
+                    {{ server.url }}
+                </strong>
+            </a>
+        </div>
+        <div class="icons vertical-align pull-right">
+            <delete-resource params="{ projectId : projectId, serverId : server.id }" get='get()' resource='Servers'></delete-resource>
+        </div>
+    </div>                
+</div>

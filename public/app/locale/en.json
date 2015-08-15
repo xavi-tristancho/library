@@ -11,10 +11,19 @@
 			"delete" : "repository",
 			"create" : "user/repository"
 		},
+		"guides" : {
+			"name" : "guide",
+			"delete" : "guide"
+		},
 		"links" : {
 			"name" : "link",
 			"create" : "url",
 			"delete" : "link"
+		},
+		"servers" : {
+			"name" : "server",
+			"create" : "url",
+			"delete" : "server"
 		},
 		"managers" : {
 			"name" : "manager",
@@ -25,6 +34,11 @@
 		},
 		"options" : {
 			"name" : "option"
+		}
+	},
+	"views" : {
+		"login" : {
+			"title" : "log in"
 		}
 	},
 	"alerts" : {

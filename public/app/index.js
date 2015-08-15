@@ -7,6 +7,8 @@ require('angular-filter');
 require('angular-translate');
 require('angular-local-storage');
 require('angular-bootstrap');
+require('angular-marked');
+require('angular-sanitize');
 
 var ngModule = angular.module('app', [
 	'ngAnimate',
@@ -18,7 +20,9 @@ var ngModule = angular.module('app', [
     'pascalprecht.translate',
     'LocalStorageModule',
     'ui.bootstrap',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'hc.marked',
+    'ngSanitize'
 ]);
 
 require('./config')(ngModule);

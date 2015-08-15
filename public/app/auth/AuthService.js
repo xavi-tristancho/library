@@ -41,10 +41,7 @@ module.exports = function(ngModule)
 
         this.signin = function (data, success, error)
         {
-            $http.post('api/login', data).success(success).error(function(response)
-            {
-                Notifications.error(response.error);
-            })
+            $http.post('api/login', data).success(success);
         }
          
         this.logout = function (success)

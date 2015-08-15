@@ -1,0 +1,42 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">                
+        <div class="row">
+            <div class="col-md-12">
+                <h4>{{ 'resources.servers.name' | translate | plural | ucfirst }}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-search search-only">
+                    <i class="search-icon glyphicon glyphicon-search"></i>
+                    <input ng-model="servers.search" class="form-control search-query">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <add-resource params="{ projectId : servers.projectId }" get="servers.getAll()" resource="Servers" transclude="1">
+                    <div class="col-md-4">
+                        <input required ng-model="$parent.button.new.name" class="form-control" placeholder="{{ 'resources.servers.name' | translate }}">
+                    </div>
+                    <div class="col-md-4">
+                        <input required ng-model="$parent.button.new.url" class="form-control" placeholder="{{ 'resources.servers.create' | translate }}">
+                    </div>
+                </add-resource>                
+            </div> 
+        </div>
+
+        <div class="list-group servers">
+            <div class="row" ng-repeat="server in servers.servers | filter: servers.search">
+                <div class="col-md-12">
+                    <server project="servers.projectId" get="servers.getAll()" server="server"></server>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            
+        </div>
+    </div>
+</div>
