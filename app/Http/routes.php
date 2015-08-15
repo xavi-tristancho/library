@@ -26,6 +26,7 @@ Route::group(array('prefix' => 'api'), function()
     Route::resource('projects.repositories', 'RepositoriesController');
     Route::resource('projects.links', 'LinksController');
     Route::resource('projects.servers', 'ServersController');
+    Route::resource('projects.guides', 'GuidesController');
 
     Route::resource('managers', 'ManagersController');
 });
