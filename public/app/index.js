@@ -26,14 +26,6 @@ var ngModule = angular.module('app', [
 ]);
 
 require('./config')(ngModule);
-require('./locale')(ngModule);
-require('./auth')(ngModule);
-require('./api')(ngModule);
-require('./alerts')(ngModule);
-require('./notifications')(ngModule);
-require('./directives')(ngModule);
-require('./filters')(ngModule);
-require('./users')(ngModule);
-require('./projects')(ngModule);
-require('./github')(ngModule);
-require('./managers')(ngModule);
+require('./common')(ngModule);
+require('./resources')(ngModule);
+require('./utils')(ngModule);
