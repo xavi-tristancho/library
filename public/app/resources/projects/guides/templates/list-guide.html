@@ -8,6 +8,7 @@
             </strong>
         </div>
         <div class="icons vertical-align pull-right">
+            <edit-resource state="editGuide" params="{ id : projectId, guideId : guide.id }"></edit-resource>
             <delete-resource params="{ projectId : projectId, guideId : guide.id }" get='get()' resource='Guides'></delete-resource>
         </div>
     </div>

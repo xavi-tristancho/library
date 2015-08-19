@@ -9,7 +9,7 @@ module.exports = function(ngModule)
                 guideId : "=guide"
             },
             template : require("./templates/guide.html"),
-            controller : function($scope, $http, $stateParams, Api)
+            controller : function($scope, $http, $state, $stateParams, Api)
             {
                 var vm = this;
                 vm.projectId = ($scope.projectId != undefined) ? $scope.projectId : parseInt($stateParams.id);
@@ -25,6 +25,11 @@ module.exports = function(ngModule)
                 }
 
                 vm.find();
+
+                vm.back = function()
+                {
+                    $state.go('viewProject', { id : vm.projectId });
+                }
             },
             controllerAs : 'guides'
         }

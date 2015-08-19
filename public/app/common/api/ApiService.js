@@ -56,6 +56,20 @@ module.exports = function(ngModule) {
                 })    
         }
 
+        this.update = function(factory, object, params)
+        {
+            return $injector.get(factory).update(params, object)
+                .$promise.then(function(response)
+                {
+                    Notifications.success(response.success);
+                    return response.data;
+                },
+                function(response)
+                {
+                    Notifications.error(response.data.error);
+                })
+        }
+
         return this;
     }
 

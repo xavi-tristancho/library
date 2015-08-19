@@ -12,7 +12,11 @@
         </div>
     </div>
     <div class="col-md-6">
-        <add-resource get="projects.getAll()" resource="Projects" placeholder="{{ 'resources.projects.create' | translate }}"></add-resource>
+        <add-resource get="projects.getAll()" resource="Projects" transclude="1">
+            <div class="col-md-8">
+                <input required ng-model="$parent.button.new.name" class="form-control" placeholder="{{ 'resources.projects.create' | translate }}">
+            </div>
+        </add-resource>
     </div> 
 </div>
 

@@ -6,7 +6,13 @@ module.exports = function(ngModule) {
         	{ 
         		projectId : '@projectId',
         		guideId : '@guideId'
-        	});
+        	},
+            {
+                update :
+                {
+                    method : 'PUT'
+                }
+            });
     }
 
     ngModule.factory('Guides', Guides);
