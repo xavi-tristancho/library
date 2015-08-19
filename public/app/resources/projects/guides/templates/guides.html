@@ -24,7 +24,7 @@
         <div class="list-group guides">
             <div class="row" ng-repeat="guide in guides.guides | filter: guides.search">
                 <div class="col-md-12">
-                    <library-guide project="guides.projectId" get="guides.getAll()" guide="guide"></library-guide>
+                    <list-guide project="guides.projectId" get="guides.getAll()" guide="guide"></list-guide>
                 </div>
             </div>
         </div>

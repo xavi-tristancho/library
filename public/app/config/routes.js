@@ -24,6 +24,11 @@ module.exports = function(ngModule)
                 templateUrl: "/views/projects/guides/create.html",
                 controllerAs: "guides"
             })
+            .state('viewGuide', {
+                url: "/projects/:id/guides/:guideId",
+                templateUrl: "/views/projects/guides/view.html",
+                controllerAs: "guides"
+            })
             .state('options', {
                 url: "/options",
                 templateUrl: "/views/options/index.html"

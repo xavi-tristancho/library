@@ -5,11 +5,28 @@ module.exports = function(ngModule)
         return {
             restrict: "E",
             scope : {
-                guide : "=",
                 projectId : "=project",
-                get : "&"
+                guideId : "=guide"
             },
             template : require("./templates/guide.html"),
+            controller : function($scope, $http, $stateParams, Api)
+            {
+                var vm = this;
+                vm.projectId = ($scope.projectId != undefined) ? $scope.projectId : parseInt($stateParams.id);
+                vm.guideId = ($scope.guideId != undefined) ? $scope.guideId : parseInt($stateParams.guideId);
+
+                vm.find = function()
+                {
+                    Api.find('Guides', { projectId : vm.projectId, guideId : vm.guideId })
+                        .then(function(guide)
+                        {
+                            vm.guide = guide;
+                        });
+                }
+
+                vm.find();
+            },
+            controllerAs : 'guides'
         }
     }
     ngModule.directive('guide', guide);
