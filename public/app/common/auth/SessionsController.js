@@ -1,6 +1,6 @@
     module.exports = function(ngModule) {
 
-    function SessionsController($rootScope, $state, localStorageService, Auth, $timeout)
+    function SessionsController($rootScope, $state, localStorageService, Auth, $timeout, Notifications)
     {
         var vm = this;
 
@@ -12,10 +12,17 @@
             $state.go('home');
         }
 
-        function successAuth(res) {       
+        function successAuth(res)
+        {
             localStorageService.set('token', res.token);
             $rootScope.token = res.token;
             $state.go('home');
+        }
+
+        function failedAuth(error)
+        {
+            vm.logginIn = false;
+            Notifications.error(error.error);
         }
 
         vm.signin = function ()
@@ -27,7 +34,7 @@
                password: vm.password
             };
 
-            Auth.signin(formData, successAuth);
+            Auth.signin(formData, successAuth, failedAuth);
         };    
     }
 
